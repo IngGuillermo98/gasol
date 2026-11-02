@@ -31,4 +31,4 @@
 
 ## Decisión 2 nov 2026
 - Guillermo decidió que en el piloto los precios empiecen en blanco y los llenen los usuarios (D-10). Plan actualizado a v0.2. Consecuencias: reclutar 20 a 40 colaboradores fundadores y sembrar precios reales en 30 a 50 estaciones antes del piloto; la fase 2 (contribución) es imprescindible antes de abrir el piloto.
-- Supuesto: el mapa sí usa el listado oficial de estaciones de la CNE. Confirmar con Guillermo.
+- Confirmado por Guillermo: el mapa usa el catálogo oficial de estaciones de la CNE (nombre, permiso, ubicación) sin precios (D-11, PR #1).

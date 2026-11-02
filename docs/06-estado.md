@@ -36,4 +36,4 @@
 - Hallazgos clave: el XML no trae fecha de publicación ni dirección; ~92 % de coordenadas con precisión de calle; 21 precios absurdos (0.01, 1, 49.49); estaciones repetidas en varios bloques de `prices`.
 - Script `scripts/cne_snapshot.py` y tarea programada `.github/workflows/cne-monitor.yml` (14 días, rama `cne-monitor`). Empieza al aprobar el PR.
 - Pendiente: licencia en datos.gob.mx; informe de frecuencia real al terminar los 14 días.
-- Decisión D-11 (2 nov 2026): en el piloto los precios los llenan los usuarios; los precios de la CNE no se muestran por ahora. El monitor de 14 días se mantiene para tener evidencia si se decide importarlos después.
+- Decisión D-11 (2 nov 2026): en el piloto los precios los llenan los usuarios; los precios de la CNE no se muestran por ahora; el mapa sí muestra las estaciones de la CNE (nombre y ubicación) sin precio, confirmado por Guillermo. El monitor de 14 días se mantiene para tener evidencia si se decide importarlos después.

@@ -11,7 +11,7 @@
 ## Bloqueado por acciones de Guillermo
 1. ~~Conectar GitHub y crear el repositorio~~ Hecho: https://github.com/IngGuillermo98/gasol (privado) con CI de lint y build.
 2. ~~Permitir el dominio de la CNE~~ Hecho: la descarga funciona desde el entorno.
-3. Revisar la licencia en datos.gob.mx (bloqueado desde el entorno) o permitir `datos.gob.mx` y `www.datos.gob.mx` en la red del entorno.
+3. Licencia de los datos de la CNE: no publicada en datos.gob.mx (revisado el 2 nov 2026). Pedirla por escrito a la CNE antes del piloto público.
 4. Aprobar el PR del monitor de la CNE para que empiecen las 14 descargas diarias.
 
 ## Preguntas abiertas para Guillermo

@@ -75,8 +75,9 @@ Estado de verificación al 2 nov 2026 (descarga real de la CNE hecha ese día). 
 ### Licencia [P]
 
 - La página de la CNE no indica licencia.
-- No se pudo abrir datos.gob.mx desde el entorno de Claude (el dominio está bloqueado por la política de red del entorno), así que la ficha del conjunto "Estaciones de servicio (gasolineras) y precios finales de gasolina y diésel" no se ha verificado.
-- [S] Los conjuntos de datos.gob.mx suelen publicarse bajo los **Términos de Libre Uso MX**, que permiten usar, reutilizar y redistribuir con atribución (dependencia, nombre del conjunto, fecha de consulta) y sin dar a entender respaldo oficial. Fuente secundaria: [wiki de OpenStreetMap, LIBRE USO MX](https://wiki.openstreetmap.org/wiki/ES:LIBRE_USO_MX). No hay que darlo por hecho: confirmar en la ficha oficial (o pedirlo por escrito a la CNE) antes del piloto público.
+- 2 nov 2026: datos.gob.mx fue rediseñado; la ruta de búsqueda anterior (`/busca/dataset`) da 404 y el buscador del portal nuevo devuelve trámites, no el conjunto de datos. Desde el entorno de Claude el sitio responde 403 (bloqueo del CDN). No se encontró una licencia publicada para estos datos.
+- [S] Los conjuntos de datos.gob.mx solían publicarse bajo los **Términos de Libre Uso MX** (uso y redistribución con atribución, sin aparentar respaldo oficial). Fuente secundaria: [wiki de OpenStreetMap, LIBRE USO MX](https://wiki.openstreetmap.org/wiki/ES:LIBRE_USO_MX).
+- **Acción:** antes del piloto público, pedir por escrito a la CNE (o por solicitud de transparencia) los términos de uso de los XML. Mientras tanto, mostrar siempre la atribución "Fuente: Comisión Nacional de Energía" con la fecha de consulta.
 
 ### Monitor de 14 días [H: script probado; P: corrida programada]
 

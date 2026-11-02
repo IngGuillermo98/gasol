@@ -9,7 +9,7 @@
 - `AGENTS.md` con reglas para todos los agentes.
 
 ## Bloqueado por acciones de Guillermo
-1. Conectar GitHub y crear el repositorio privado `gasol` (después Claude sube el esqueleto y los docs).
+1. ~~Conectar GitHub y crear el repositorio~~ Hecho: https://github.com/IngGuillermo98/gasol (privado) con CI de lint y build.
 2. Permitir en el entorno de nube el dominio `publicacionexterna.azurewebsites.net` (descarga de datos de la CNE).
 
 ## Preguntas abiertas para Guillermo

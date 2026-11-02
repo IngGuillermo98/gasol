@@ -25,4 +25,4 @@
 - Sin depender de nada: modelo de datos (0.4), plan de eventos (0.6), revisión de competidores (0.8).
 
 ## Avance posterior (2 nov 2026)
-- Borrador del modelo de datos en `supabase/migrations/20261102000000_init.sql` (tarea 0.4, sin aplicar: falta Docker o un proyecto Supabase de desarrollo para probarlo). Pendiente: políticas de moderador, límites de frecuencia y función de "precio mostrado".
+- Borrador del modelo de datos en `supabase/migrations/20261102000000_init.sql` (tarea 0.4). Probado en un PostgreSQL 16 + PostGIS local con un esquema `auth` simulado: la migración aplica sin errores, la consulta por área visible funciona, un visitante no ve datos de demostración ni pendientes, y un colaborador puede crear una observación pendiente pero la base de datos rechaza que la publique directamente. Falta probarlo en Supabase real. Pendiente: políticas de moderador, límites de frecuencia y función de "precio mostrado".

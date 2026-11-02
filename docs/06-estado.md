@@ -41,3 +41,17 @@
 ## Decisión 2 nov 2026
 - Guillermo decidió que en el piloto los precios empiecen en blanco y los llenen los usuarios (D-10). Plan actualizado a v0.2. Consecuencias: reclutar 20 a 40 colaboradores fundadores y sembrar precios reales en 30 a 50 estaciones antes del piloto; la fase 2 (contribución) es imprescindible antes de abrir el piloto.
 - Confirmado por Guillermo: el mapa usa el catálogo oficial de estaciones de la CNE (nombre, permiso, ubicación) sin precios (D-11, PR #1).
+
+## Construcción del MVP a $0 (desde 2 nov 2026)
+Guillermo pidió un producto funcionando antes de responder las 5 preguntas o gastar dinero. Supuestos por defecto, todos reversibles:
+
+| Pregunta abierta | Supuesto mientras no responda |
+|---|---|
+| Ciudad piloto | Configurable (`NEXT_PUBLIC_PILOT_CITY`, centro y zoom). Valor inicial: Guadalajara, solo para el mapa inicial. |
+| Segmento | Conductores urbanos de alto kilometraje. |
+| Moderación | Guillermo es el único moderador (rol `admin`). |
+| Titular | Sin definir; textos legales como borrador sin titular. |
+| Nombre y dominio | "Gasol" como nombre provisional; sin dominio. |
+| Presupuesto | $0: todo corre en local (Supabase local con Docker), teselas de OpenFreeMap y búsqueda con Nominatim (gratuitos, sin clave). |
+
+Entregas: PR 1 base de datos e importador · PR 2 consulta (mapa, lista, búsqueda, ficha) · PR 3 aportes y cuenta · PR 4 moderación. Guía para probar: `docs/09-desarrollo-local.md`.

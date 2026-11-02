@@ -1,0 +1,1 @@
+-- Sin datos de demostración: el catálogo se carga con `pnpm --dir web import:cne` (datos reales de la CNE).

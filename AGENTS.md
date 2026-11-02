@@ -9,4 +9,4 @@
 7. **Decisiones:** toda decisión de tecnología, datos o política se registra en `docs/02-decisiones.md` con fecha, razón y alternativa.
 8. **Entregas:** una tarea está terminada solo con su criterio de aceptación verificado (prueba, comando o captura), sin pasos manuales ocultos. Di qué es demostración visual y qué está conectado y probado.
 9. **Gasto y publicación:** no contrates servicios, gastes dinero, publiques la app ni campañas sin autorización expresa de Guillermo.
-10. **Comandos:** `pnpm --dir web lint`, `pnpm --dir web build`, `pnpm --dir web test` (cuando exista). Deben pasar antes de abrir un PR.
+10. **Comandos:** `pnpm --dir web lint`, `pnpm --dir web test`, `pnpm --dir web build` y `pnpm --dir web exec supabase test db`. Deben pasar antes de abrir un PR. Guía local: `docs/09-desarrollo-local.md`.

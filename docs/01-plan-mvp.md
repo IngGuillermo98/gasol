@@ -1,6 +1,8 @@
 # Gasol: plan del MVP
 
-Versión 0.1 · 2 de noviembre de 2026 · Estado: propuesta para aprobación de Guillermo
+Versión 0.2 · 2 de noviembre de 2026 · Estado: propuesta para aprobación de Guillermo
+
+> **Cambio v0.2 (decisión de Guillermo, 2 nov 2026):** en el piloto los precios empiezan en blanco y los llenan los usuarios. No se muestran precios de la CNE por ahora. [S] Las estaciones y sus coordenadas sí se toman del listado oficial, porque sin ellas no hay mapa.
 
 Convención: **[H]** hecho comprobado (con fuente), **[S]** supuesto o hipótesis, **[P]** decisión pendiente.
 
@@ -20,7 +22,7 @@ Convención: **[H]** hecho comprobado (con fuente), **[S]** supuesto o hipótesi
 | H2 | Los usuarios vuelven | Retención semana 4 por cohorte | ≥ 15 % |
 | H3 | Una parte de usuarios aporta o confirma precios | % de usuarios activos que confirman o proponen al menos 1 precio al mes | ≥ 3 % |
 | H4 | El precio reportado a la CNE difiere a veces del de bomba, y eso le importa al usuario | % de observaciones que difieren > 0.30 MXN/L del reporte oficial | Se mide; no tiene umbral |
-| H5 | Podemos mantener precios recientes en la zona piloto | % de estaciones del piloto con precio de ≤ 7 días | ≥ 80 % (oficial o comunitario) |
+| H5 | Podemos mantener precios recientes en la zona piloto | % de estaciones del piloto con precio de ≤ 7 días | ≥ 60 % con precio comunitario (meta ajustada al partir de cero) |
 
 **Métrica principal (North Star) propuesta:** *consultas útiles semanales*: sesiones en las que el usuario vio al menos una estación con precio de ≤ 7 días del combustible que filtró, y abrió su ficha o inició navegación. No cuenta visitas sin información útil.
 
@@ -30,7 +32,7 @@ Convención: **[H]** hecho comprobado (con fuente), **[S]** supuesto o hipótesi
 
 **Piloto geográfico [P]:** una zona metropolitana donde Guillermo pueda hacer entrevistas y visitas. Los datos oficiales cubren todo el país desde el primer día; el piloto define dónde se recluta comunidad, se mide y se modera.
 
-**Datos y colaboradores antes de tener comunidad:** precios oficiales de la CNE como base; 10 a 20 colaboradores fundadores reclutados en grupos de conductores; recorridos de verificación propios en una muestra de 30 estaciones para medir la diferencia entre el reporte oficial y la bomba.
+**Datos y colaboradores antes de tener comunidad:** estaciones del listado oficial con precios en blanco; 20 a 40 colaboradores fundadores reclutados en grupos de conductores; recorridos propios en las 30 a 50 estaciones más transitadas de la zona piloto para sembrar los primeros precios reales (son observaciones comunitarias reales, nunca datos inventados).
 
 ## 3. Alcance
 
@@ -44,7 +46,7 @@ Convención: **[H]** hecho comprobado (con fuente), **[S]** supuesto o hipótesi
 - Like o dislike de la estación, separado del precio.
 - Reportar error o contenido inapropiado.
 - Panel privado de moderación: cola de observaciones y reportes, decisiones con historial, advertencias y suspensiones temporales, apelación básica.
-- Importación diaria automática de estaciones y precios oficiales.
+- Importación automática del listado de estaciones (nombre, permiso, dirección, coordenadas). Los precios oficiales se guardan internamente para comparar y detectar valores atípicos, pero no se muestran en el piloto.
 - PWA instalable; sin conexión solo muestra la última consulta, marcada con su fecha y "sin conexión".
 - Aviso de privacidad, términos de uso y analítica sin ubicación precisa.
 
@@ -76,11 +78,11 @@ Versiones comprobadas el 2 nov 2026 instalando y compilando un esqueleto (`pnpm 
 
 Arquitectura: un monolito modular de Next.js (módulos: mapa, estaciones, precios, contribuciones, moderación, cuentas, importación) sobre una base de datos Postgres. Permisos aplicados en servidor y con Row Level Security. Sin microservicios.
 
-**Regla para el precio mostrado (borrador):** por estación y combustible se muestra la observación publicada más reciente dentro de su vigencia (oficial: fecha del reporte; comunitaria: publicada con 2 confirmaciones independientes o colaborador de confianza). Más de 7 días: "precio antiguo". Más de 30 días: "sin información reciente". Todo cambio queda en historial y se puede revertir.
+**Regla para el precio mostrado (borrador):** por estación y combustible se muestra la observación publicada más reciente dentro de su vigencia (en el piloto solo comunitaria: publicada con 2 confirmaciones independientes o colaborador de confianza). Más de 7 días: "precio antiguo". Más de 30 días: "sin información reciente". Sin observaciones: "sin información, ¿sabes el precio?" con botón para aportarlo. Todo cambio queda en historial y se puede revertir.
 
 ## 5. Fuentes de datos (plan de verificación)
 
-Detalle en `03-fuentes-datos.md`. Fuente principal: publicación diaria de la **CNE** (antes CRE) con precios por estación en XML (`publicacionexterna.azurewebsites.net/publicaciones/prices` y `/places`), actualizada a las 18:00 (GMT-6) según [la página de la CNE](https://www.cne.gob.mx/ConsultaPrecios/GasolinasyDiesel/GasolinasyDiesel.html). [H] El endpoint de precios respondió hoy con datos. [P] Licencia de reutilización no indicada en esa página; hay que confirmarla en datos.gob.mx o pedirla por escrito. Profeco publica cada semana el reporte "Quién es Quién en los Precios", útil como referencia, no por estación.
+Detalle en `03-fuentes-datos.md`. En el piloto, la CNE se usa solo para el **listado de estaciones**; los precios los aportan los usuarios. Fuente: publicación diaria de la **CNE** (antes CRE) con estaciones y precios en XML (`publicacionexterna.azurewebsites.net/publicaciones/prices` y `/places`), actualizada a las 18:00 (GMT-6) según [la página de la CNE](https://www.cne.gob.mx/ConsultaPrecios/GasolinasyDiesel/GasolinasyDiesel.html). [H] El endpoint de precios respondió hoy con datos. [P] Licencia de reutilización no indicada en esa página; hay que confirmarla en datos.gob.mx o pedirla por escrito. Profeco publica cada semana el reporte "Quién es Quién en los Precios", útil como referencia, no por estación.
 
 ## 6. Presupuesto preliminar
 
@@ -119,7 +121,7 @@ Supuestos de uso (piloto): 15 sesiones de mapa por usuario al mes, 3 búsquedas 
 | Fase | Duración estimada | Entregables | Criterios de aceptación |
 |---|---|---|---|
 | **0. Descubrimiento y fundaciones** | 1 a 2 semanas | Repositorio con AGENTS.md y docs; verificación de fuentes (14 días de descargas); modelo de datos y contratos de API; recorridos y wireframes móviles; plan de eventos; aviso de privacidad borrador | Fuentes documentadas con licencia o pendiente explícito; modelo de datos revisado; wireframes de los 7 recorridos aprobados por Guillermo |
-| **1. Consulta (alfa privada)** | 2 a 3 semanas | Importación diaria idempotente; mapa y lista por área visible; búsqueda; filtros; ficha; navegación externa; aviso fuera de cobertura; PWA | La importación corre 2 veces sin duplicados y registra errores; consulta por área < 300 ms en BD; Lighthouse móvil ≥ 85 en rendimiento y ≥ 95 en accesibilidad; Playwright cubre consulta, búsqueda y ficha en viewport móvil; ningún dato de demostración se muestra como real |
+| **1. Consulta (alfa privada)** | 2 a 3 semanas | Importación idempotente de estaciones; mapa y lista por área visible; búsqueda; filtros; ficha; navegación externa; aviso fuera de cobertura; PWA | La importación corre 2 veces sin duplicados y registra errores; consulta por área < 300 ms en BD; Lighthouse móvil ≥ 85 en rendimiento y ≥ 95 en accesibilidad; Playwright cubre consulta, búsqueda y ficha en viewport móvil; ningún dato de demostración se muestra como real; todas las estaciones muestran "sin información" hasta que haya aportes |
 | **2. Contribución** | 2 a 3 semanas | Registro; proponer, confirmar y disputar; reportes; like/dislike; límites de frecuencia; historial | Pruebas automáticas de permisos (visitante, colaborador, moderador, admin) contra RLS; un usuario no puede sobrescribir precios; límites de frecuencia probados; estados de observación correctos |
 | **3. Moderación y piloto cerrado** | 2 semanas + 4 semanas de piloto | Panel de moderación; sanciones y apelación; valores atípicos; analítica; monitoreo; respaldo y prueba de restauración | Caso de moderación completo verificado de punta a punta; restauración probada; tablero con métricas H1 a H5; **lanzamiento público solo con autorización de Guillermo** |
 

@@ -28,3 +28,7 @@
 - Borrador del modelo de datos en `supabase/migrations/20261102000000_init.sql` (tarea 0.4). Probado en un PostgreSQL 16 + PostGIS local con un esquema `auth` simulado: la migración aplica sin errores, la consulta por área visible funciona, un visitante no ve datos de demostración ni pendientes, y un colaborador puede crear una observación pendiente pero la base de datos rechaza que la publique directamente. Falta probarlo en Supabase real. Pendiente: políticas de moderador, límites de frecuencia y función de "precio mostrado".
 - Plan de eventos y métricas en `07-metricas-eventos.md` (tarea 0.6, borrador).
 - Revisión inicial de alternativas en `08-competidores.md` (tarea 0.8, falta probar apps en teléfono). Hallazgo: el acuerdo voluntario de tope de 24 MXN para Magna reduce la diferencia de precio en regular; el valor de Gasol se apoya más en diésel, premium y frescura del dato.
+
+## Decisión 2 nov 2026
+- Guillermo decidió que en el piloto los precios empiecen en blanco y los llenen los usuarios (D-10). Plan actualizado a v0.2. Consecuencias: reclutar 20 a 40 colaboradores fundadores y sembrar precios reales en 30 a 50 estaciones antes del piloto; la fase 2 (contribución) es imprescindible antes de abrir el piloto.
+- Supuesto: el mapa sí usa el listado oficial de estaciones de la CNE. Confirmar con Guillermo.

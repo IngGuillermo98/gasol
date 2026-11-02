@@ -12,3 +12,5 @@
 | D-08 | 2026-11-02 | TypeScript 5.9 (el que fija create-next-app 16.4.4), no 7.0 aún | Compatibilidad con herramientas | Migrar a 7 con rama de prueba | Propuesta |
 | D-09 | 2026-11-02 | Sin IA dentro del producto en el MVP | No resuelve un problema del MVP | n/a | Decidida por el prompt maestro |
 | D-10 | 2026-11-02 | Piloto con precios solo comunitarios: empiezan en blanco y los llenan los usuarios. CNE solo para el listado de estaciones; sus precios se guardan internamente para detectar atípicos | Decisión de Guillermo | Mostrar precios CNE más adelante si conviene | Decidida (Guillermo) |
+| D-11 | 2026-11-02 | El mapa del piloto muestra el catálogo de estaciones de la CNE (nombre, permiso, ubicación) sin precios | Capturar un precio en una estación existente es rápido; dar de alta estaciones genera duplicados y errores | Que los usuarios den de alta las estaciones | Decidida (Guillermo) |
+| D-12 | 2026-11-02 | Monitor de la CNE en GitHub Actions programado, con resultados en la rama `cne-monitor` | Gratis, sin servidor y con historial en git; no ensucia `main` | Tarea programada en Supabase o Vercel Cron | Propuesta |

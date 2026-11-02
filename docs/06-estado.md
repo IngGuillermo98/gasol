@@ -23,3 +23,6 @@
 - Al tener red: 14 días de descargas de la CNE e informe de calidad (tarea 0.2).
 - Al tener repo: subir código, CI de lint y build (0.1).
 - Sin depender de nada: modelo de datos (0.4), plan de eventos (0.6), revisión de competidores (0.8).
+
+## Avance posterior (2 nov 2026)
+- Borrador del modelo de datos en `supabase/migrations/20261102000000_init.sql` (tarea 0.4, sin aplicar: falta Docker o un proyecto Supabase de desarrollo para probarlo). Pendiente: políticas de moderador, límites de frecuencia y función de "precio mostrado".

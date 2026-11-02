@@ -7,9 +7,10 @@
 | D-03 | 2026-11-02 | MapLibre GL JS para el mapa | Abierto, sin bloqueo de proveedor | Leaflet | Propuesta |
 | D-04 | 2026-11-02 | MapTiler Free solo en prototipo privado; antes del piloto público decidir entre MapTiler Flex y Protomaps autoalojado | El plan Free no permite uso comercial; el costo por sesión escala mal | Protomaps (OSM) | Pendiente antes de fase 3 |
 | D-05 | 2026-11-02 | Los usuarios crean observaciones; nunca sobrescriben el precio | Historial, moderación y reversión | n/a | Propuesta |
-| D-06 | 2026-11-02 | Fuente base: XML diario de la CNE; Profeco solo como referencia | Única fuente oficial por estación conocida hasta ahora | Comunidad | Pendiente de licencia |
+| D-06 | 2026-11-02 | ~~Fuente base de precios: XML diario de la CNE~~ Reemplazada por D-10 | n/a | n/a | Reemplazada |
 | D-07 | 2026-11-02 | Segmento piloto: conductores de alto kilometraje urbano | Frecuencia de carga y comunidades organizadas | Transportistas | Supuesto, a confirmar |
 | D-08 | 2026-11-02 | TypeScript 5.9 (el que fija create-next-app 16.4.4), no 7.0 aún | Compatibilidad con herramientas | Migrar a 7 con rama de prueba | Propuesta |
 | D-09 | 2026-11-02 | Sin IA dentro del producto en el MVP | No resuelve un problema del MVP | n/a | Decidida por el prompt maestro |
-| D-10 | 2026-11-02 | Monitor de la CNE en GitHub Actions programado, con resultados en la rama `cne-monitor` | Gratis, sin servidor y con historial en git; no ensucia `main` | Tarea programada en Supabase o Vercel Cron | Propuesta |
-| D-11 | 2026-11-02 | Piloto sin precios de la CNE: los precios los capturan los usuarios. Se usa el catálogo de estaciones de la CNE (nombre, permiso, ubicación) para que haya dónde capturar | Decisión de Guillermo; evita depender de la licencia mientras se pide | Importar precios de la CNE (diseño listo en `03`) | Decidida |
+| D-10 | 2026-11-02 | Piloto con precios solo comunitarios: empiezan en blanco y los llenan los usuarios. CNE solo para el listado de estaciones; sus precios se guardan internamente para detectar atípicos | Decisión de Guillermo | Mostrar precios CNE más adelante si conviene | Decidida (Guillermo) |
+| D-11 | 2026-11-02 | El mapa del piloto muestra el catálogo de estaciones de la CNE (nombre, permiso, ubicación) sin precios | Capturar un precio en una estación existente es rápido; dar de alta estaciones genera duplicados y errores | Que los usuarios den de alta las estaciones | Decidida (Guillermo) |
+| D-12 | 2026-11-02 | Monitor de la CNE en GitHub Actions programado, con resultados en la rama `cne-monitor` | Gratis, sin servidor y con historial en git; no ensucia `main` | Tarea programada en Supabase o Vercel Cron | Propuesta |

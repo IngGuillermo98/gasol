@@ -35,5 +35,9 @@
 - Descarga de `places` y `prices` verificada: 15,046 estaciones, 13,852 con precio. Estructura, conteos, calidad de coordenadas y reglas de importación en `03-fuentes-datos.md`.
 - Hallazgos clave: el XML no trae fecha de publicación ni dirección; ~92 % de coordenadas con precisión de calle; 21 precios absurdos (0.01, 1, 49.49); estaciones repetidas en varios bloques de `prices`.
 - Script `scripts/cne_snapshot.py` y tarea programada `.github/workflows/cne-monitor.yml` (14 días, rama `cne-monitor`). Empieza al aprobar el PR.
-- Pendiente: licencia en datos.gob.mx; informe de frecuencia real al terminar los 14 días.
-- Decisión D-11 (2 nov 2026): en el piloto los precios los llenan los usuarios; los precios de la CNE no se muestran por ahora; el mapa sí muestra las estaciones de la CNE (nombre y ubicación) sin precio, confirmado por Guillermo. El monitor de 14 días se mantiene para tener evidencia si se decide importarlos después.
+- Licencia: no publicada en datos.gob.mx; pedirla por escrito a la CNE. El monitor (D-12) se mantiene aunque el piloto no muestre precios de la CNE, como evidencia para importarlos después.
+- Pendiente: informe de frecuencia real al terminar los 14 días.
+
+## Decisión 2 nov 2026
+- Guillermo decidió que en el piloto los precios empiecen en blanco y los llenen los usuarios (D-10). Plan actualizado a v0.2. Consecuencias: reclutar 20 a 40 colaboradores fundadores y sembrar precios reales en 30 a 50 estaciones antes del piloto; la fase 2 (contribución) es imprescindible antes de abrir el piloto.
+- Confirmado por Guillermo: el mapa usa el catálogo oficial de estaciones de la CNE (nombre, permiso, ubicación) sin precios (D-11, PR #1).

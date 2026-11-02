@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import:cne": "node scripts/import-cne.ts",
+    "test": "vitest run",
+    "make-admin": "node scripts/make-admin.ts"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",
     "@supabase/supabase-js": "2.118.0",
+    "fast-xml-parser": "^5.11.2",
     "maplibre-gl": "6.16.0",
     "next": "16.4.4",
+    "pg": "^8.23.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "zod": "4.6.7"
@@ -21,6 +26,7 @@
     "@playwright/test": "1.64.1",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
@@ -30,5 +36,6 @@
     "typescript": "^5",
     "vitest": "5.1.0"
   },
-  "packageManager": "pnpm@10.28.0"
+  "packageManager": "pnpm@10.28.0",
+  "type": "module"
 }

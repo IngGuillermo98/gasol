@@ -1,0 +1,56 @@
+name: CNE monitor
+# Downloads the CNE places/prices feeds once a day and commits a summary to the
+# `cne-monitor` branch. Stops by itself after 14 successful-or-failed runs.
+# Scheduled workflows only run from the default branch, so this starts after merge.
+on:
+  schedule:
+    - cron: "30 1 * * *" # 01:30 UTC = 19:30 in CDMX, after the 18:00 publication
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cne-monitor
+  cancel-in-progress: false
+env:
+  MONITOR_BRANCH: cne-monitor
+  MAX_RUNS: "14"
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main
+      - name: Check out monitor branch (create if missing)
+        run: |
+          if git ls-remote --exit-code --heads "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" "$MONITOR_BRANCH"; then
+            git clone --depth 1 --branch "$MONITOR_BRANCH" "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" monitor
+          else
+            mkdir monitor && cd monitor && git init -b "$MONITOR_BRANCH"
+            git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
+          fi
+      - name: Stop after the planned number of runs
+        id: gate
+        run: |
+          f=monitor/data/cne-monitor/summaries.jsonl
+          runs=0; if [ -f "$f" ]; then runs=$(wc -l < "$f"); fi
+          echo "runs so far: $runs"
+          if [ "$runs" -ge "$MAX_RUNS" ]; then echo "skip=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Download and summarize
+        if: steps.gate.outputs.skip != 'true'
+        id: snap
+        continue-on-error: true
+        run: python3 -I main/scripts/cne_snapshot.py --out monitor/data/cne-monitor
+      - name: Commit summary
+        if: steps.gate.outputs.skip != 'true'
+        working-directory: monitor
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add data/cne-monitor
+          git commit -m "CNE snapshot $(date -u +%F)" || exit 0
+          git push origin "HEAD:$MONITOR_BRANCH"
+      - name: Fail the job if the download failed
+        if: steps.snap.outcome == 'failure'
+        run: exit 1

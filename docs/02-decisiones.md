@@ -12,3 +12,4 @@
 | D-08 | 2026-11-02 | TypeScript 5.9 (el que fija create-next-app 16.4.4), no 7.0 aún | Compatibilidad con herramientas | Migrar a 7 con rama de prueba | Propuesta |
 | D-09 | 2026-11-02 | Sin IA dentro del producto en el MVP | No resuelve un problema del MVP | n/a | Decidida por el prompt maestro |
 | D-10 | 2026-11-02 | Monitor de la CNE en GitHub Actions programado, con resultados en la rama `cne-monitor` | Gratis, sin servidor y con historial en git; no ensucia `main` | Tarea programada en Supabase o Vercel Cron | Propuesta |
+| D-11 | 2026-11-02 | Piloto sin precios de la CNE: los precios los capturan los usuarios. Se usa el catálogo de estaciones de la CNE (nombre, permiso, ubicación) para que haya dónde capturar [S: a confirmar por Guillermo] | Decisión de Guillermo; evita depender de la licencia mientras se pide | Importar precios de la CNE (diseño listo en `03`) | Decidida |
